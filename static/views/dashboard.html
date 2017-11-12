@@ -1,0 +1,86 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Dashboard</h2>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h4 class="title">Data</h4>
+                    <p class="category">Users and Groups</p>
+                </div>               
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <table  class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>email</th>
+                                    <th>user name</th>
+                                </tr>
+                                </thead>
+                                <tbody>               
+                                    <tr data-ng-repeat="item in users" >
+                                        <td>{{($index + 1)}}</td>
+                                        <td>{{item.email}}</td>
+                                        <td>{{item.username}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-4">
+                            <table  class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Group name</th>
+                                    <th>Members</th>
+                                </tr>
+                                </thead>
+                                <tbody>               
+                                    <tr data-ng-repeat="item in groups" >
+                                        <td>{{($index + 1)}}</td>
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.user_set}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h4 class="title">Add group</h4>
+                    <p class="category"></p>
+                </div>               
+                <div class="ibox-content">
+                    <form name="myForm">
+                        <div class="form-group">
+                            <label for="select"> select users: </label>
+                            <select  name="ngvalueselect" ng-model="data.model" multiple>
+                                <option ng-repeat="option in data.availableOptions" ng-value="option.value">{{option.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                                <label class="control-label">name<star>*</star></label>
+                                <input type="text" class="form-control" placeholder="Group Name" name="name" ng-model="data.name">
+                        </div>
+                        <div class="content">
+                            <button type="submit" ng-click="addGroup(data)" class="btn btn-info btn-fill">ADD</button>
+                        </div>   
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
