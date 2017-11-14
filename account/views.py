@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.contrib.auth import get_user_model
 
 from .serializers import UserSerializer, GroupSerializer
@@ -39,7 +39,7 @@ class UserRegister(APIView):
 
 class GroupList(APIView):
     serializer_class = GroupSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
